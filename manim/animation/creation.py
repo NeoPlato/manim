@@ -71,12 +71,20 @@ __all__ = [
 
 
 import itertools as it
-from typing import TYPE_CHECKING, Callable, Dict, Iterable, List, Optional, Tuple, Union
+from typing import (
+    TYPE_CHECKING,
+    Callable,
+    Dict,
+    Iterable,
+    List,
+    Optional,
+    Sequence,
+    Tuple,
+    Union,
+)
 
 import numpy as np
 from colour import Color
-
-from .. import logger
 
 if TYPE_CHECKING:
     from manim.mobject.svg.text_mobject import Text
@@ -87,6 +95,7 @@ from ..mobject.mobject import Group, Mobject
 from ..mobject.types.opengl_vectorized_mobject import OpenGLVMobject
 from ..mobject.types.vectorized_mobject import VMobject
 from ..utils.bezier import integer_interpolate
+from ..utils.deprecation import deprecated
 from ..utils.rate_functions import double_smooth, linear, smooth
 
 
@@ -239,7 +248,7 @@ class DrawBorderThenFill(Animation):
             return vmobject.get_stroke_color()
         return vmobject.get_color()
 
-    def get_all_mobjects(self) -> List[Union[Mobject, None]]:
+    def get_all_mobjects(self) -> Sequence[Mobject]:
         return [*super().get_all_mobjects(), self.outline]
 
     def interpolate_submobject(

@@ -48,7 +48,7 @@ Mobjects
    ~mobject.types.vectorized_mobject
 
 **Mobject** Inheritance Graph
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inheritance-diagram::
    manim.mobject.changing
@@ -102,7 +102,7 @@ Scenes
    ~scene.zoomed_scene
 
 **Scene** Inheritance Graph
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inheritance-diagram::
    manim.scene.graph_scene
@@ -139,7 +139,7 @@ Animations
    ~animation.update
 
 **Animation** Inheritance Graph
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inheritance-diagram::
    manim.animation.animation
@@ -172,7 +172,7 @@ Cameras
    ~camera.three_d_camera
 
 **Camera** Inheritance Graph
-~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. inheritance-diagram::
    manim.camera.camera
@@ -205,6 +205,7 @@ Utilities
    ~utils.bezier
    ~utils.color
    ~utils.config_ops
+   ~utils.deprecation
    ~utils.hashing
    ~utils.ipython_magic
    ~utils.images
