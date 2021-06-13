@@ -2,10 +2,12 @@
 
 __all__ = ["SampleSpace", "BarChart"]
 
+import numpy as np
 
 from ..constants import *
 from ..mobject.geometry import Line, Rectangle
 from ..mobject.mobject import Mobject
+from ..mobject.opengl_mobject import OpenGLMobject
 from ..mobject.svg.brace import Brace
 from ..mobject.svg.tex_mobject import MathTex, Tex
 from ..mobject.types.vectorized_mobject import VGroup
@@ -25,6 +27,24 @@ EPSILON = 0.0001
 
 
 class SampleSpace(Rectangle):
+    """
+
+    Examples
+    --------
+
+    .. manim:: ExampleSampleSpace
+        :save_last_frame:
+
+        class ExampleSampleSpace(Scene):
+            def construct(self):
+                poly1 = SampleSpace(stroke_width=15, fill_opacity=1)
+                poly2 = SampleSpace(width=5, height=3, stroke_width=5, fill_opacity=0.5)
+                poly3 = SampleSpace(width=2, height=2, stroke_width=5, fill_opacity=0.1)
+                poly3.divide_vertically(p_list=np.array([0.37, 0.13, 0.5]), colors=[BLACK, WHITE, GRAY], vect=RIGHT)
+                poly_group = VGroup(poly1, poly2, poly3).arrange()
+                self.add(poly_group)
+    """
+
     def __init__(
         self,
         height=3,
@@ -102,7 +122,7 @@ class SampleSpace(Rectangle):
         braces = VGroup()
         for label, part in zip(labels, parts):
             brace = Brace(part, direction, min_num_quads=min_num_quads, buff=buff)
-            if isinstance(label, Mobject):
+            if isinstance(label, (Mobject, OpenGLMobject)):
                 label_mob = label
             else:
                 label_mob = MathTex(label)

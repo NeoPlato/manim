@@ -1,5 +1,9 @@
 """Mobjects used for displaying (non-LaTeX) text.
 
+.. note::
+   Just as you can use :class:`~.Tex` and :class:`~.MathTex` (from the module :mod:`~.tex_mobject`) to insert LaTeX to your videos, you can use :class:`~.Text` to to add normal text.
+
+
 The simplest way to add text to your animations is to use the :class:`~.Text` class. It uses the Pango library to render text.
 With Pango, you are also able to render non-English alphabets like `你好` or  `こんにちは` or `안녕하세요` or `مرحبا بالعالم`.
 
@@ -24,18 +28,14 @@ Examples
             self.add(title.to_edge(UP))
 
             t1 = Text("1. Measuring").set_color(WHITE)
-            t1.next_to(ORIGIN, direction=RIGHT, aligned_edge=UP)
 
             t2 = Text("2. Clustering").set_color(WHITE)
-            t2.next_to(t1, direction=DOWN, aligned_edge=LEFT)
 
             t3 = Text("3. Regression").set_color(WHITE)
-            t3.next_to(t2, direction=DOWN, aligned_edge=LEFT)
 
             t4 = Text("4. Prediction").set_color(WHITE)
-            t4.next_to(t3, direction=DOWN, aligned_edge=LEFT)
 
-            x = VGroup(t1, t2, t3, t4).scale_in_place(0.7)
+            x = VGroup(t1, t2, t3, t4).arrange(direction=DOWN, aligned_edge=LEFT).scale_in_place(0.7).next_to(ORIGIN,DR)
             x.set_opacity(0.5)
             x.submobjects[1].set_opacity(1)
             self.add(x)
@@ -361,7 +361,7 @@ class Text(SVGMobject):
                 chin = Text(
                     "見 角 言 谷  辛 辰 辵 邑 酉 釆 里!", t2c={"見 角 言": BLUE}
                 )  # works same as ``Text``.
-                mess = Text("Multi-Language", style=BOLD)
+                mess = Text("Multi-Language", weight=BOLD)
                 russ = Text("Здравствуйте मस नम म ", font="sans-serif")
                 hin = Text("नमस्ते", font="sans-serif")
                 arb = Text(
@@ -871,7 +871,7 @@ class MarkupText(SVGMobject):
                 chin = MarkupText(
                     '見 角 言 谷  辛 <span fgcolor="blue">辰 辵 邑</span> 酉 釆 里!'
                 )  # works as in ``Text``.
-                mess = MarkupText("Multi-Language", style=BOLD)
+                mess = MarkupText("Multi-Language", weight=BOLD)
                 russ = MarkupText("Здравствуйте मस नम म ", font="sans-serif")
                 hin = MarkupText("नमस्ते", font="sans-serif")
                 japanese = MarkupText("臂猿「黛比」帶著孩子", font="sans-serif")
